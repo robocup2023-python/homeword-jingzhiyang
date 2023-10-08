@@ -6,6 +6,7 @@ from random import randint
 test1 = {(1,2):2,(3,4):10}
 for [i,j],k in test1.items():
     print(i,j,k)
+    
 
 # from time import sleep
 # print("hello")
