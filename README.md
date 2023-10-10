@@ -16,3 +16,10 @@ Start the program by running `python ./day13_filegame.py`
   # to get help, use:
   python ./rmxlsx.py -h
   ```
+
+### day10
+
+  
+
+### day09
+- Nothing special
