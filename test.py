@@ -3,9 +3,10 @@ from random import randint
 # for i in range(20):
 #     print(randint(4,10))
 
-test1 = {(1,2):2,(3,4):10}
-for [i,j],k in test1.items():
-    print(i,j,k)
+print(1 + 5 < 3 + 8)
+# test1 = {(1,2):2,(3,4):10}
+# for [i,j],k in test1.items():
+#     print(i,j,k)
     
 
 # from time import sleep
