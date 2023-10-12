@@ -49,10 +49,10 @@ def translateHandler():
 
 @app.route('/api/translate', methods=['POST'])
 def translate():
-    handler = threading.Thread(target=translateHandler)
-    handler.start()
-    return "OK"
+    # handler = threading.Thread(target=translateHandler)
+    # handler.start()
+    return translateHandler()
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,threaded=True,port=5010)
