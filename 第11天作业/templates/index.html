@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>在线翻译</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
+    <script src="//unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
+    <script src="//unpkg.com/element-plus"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+  <body>
+    <div id="app" class="flex justify-center">
+        <div class="h-screen flex flex-col w-1/2 justify-center">
+          <div class="flex flex-row items-center ">
+            <el-input
+              v-model="chinese"
+              rows="5"
+              type="textarea"
+              placeholder="请输入中文"
+              class="m-10"
+              resize="none"
+            ></el-input>
+            <el-button type="primary" @click="submit" plain>翻译</el-button>
+          </div>
+          <div class="h-20 flex justify-center w-full m-0">
+            <el-input
+              v-model="english"
+              rows="5"
+              type="textarea"
+              placeholder="对应英文"
+              class="m-10"
+              resize="none"
+              aria-disabled="true"
+            ></el-input>
+          </div>
+        </div>
+      <router-view> </router-view>
+    </div>
+  </body>
+</html>
+
+<script type="module">
+    const { createApp, ref } = Vue;
+    const { createRouter, createWebHashHistory } = VueRouter;
+    const { watch,onMounted } = Vue;
+    const test = ref("no")
+
+    // console.log(ELEMENT)
+    const Main = {
+        template: `
+            <div>
+                <div>{{ message }}</div>
+            </div>
+        `,
+        setup() {
+
+        }
+    };
+    const router = createRouter({
+        history: createWebHashHistory(),
+        routes: [
+            { path: '/', component: Main },
+        ]
+    });
+
+    const app = createApp({
+      setup() {
+        const chinese = ref("")
+        const english = ref("")
+
+        function submit(){
+          console.log("submitting")
+          axios.post('/api/translate',{
+              content:chinese
+          }).then(function (response) {
+              console.log(response)
+              english.value = response.data
+              console.log(english.value)
+          }).catch(function(error){
+              console.log("axios error",error)
+          })
+        }
+        return {
+          chinese,english,submit
+        }
+      }
+    });
+    app.use(router)
+    app.use(ElementPlus)
+    app.mount('#app');
+</script>
+

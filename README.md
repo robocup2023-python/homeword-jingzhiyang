@@ -17,8 +17,13 @@ Start the program by running `python ./day13_filegame.py`
   python ./rmxlsx.py -h
   ```
 
-### day10
+### day11
+`day11_rename` will automatically rename the files in the `testfiles` dir using threading.
 
+
+
+### day10
+- Written in python
   
 
 ### day09
