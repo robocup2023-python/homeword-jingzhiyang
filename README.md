@@ -18,6 +18,9 @@ but treated it as plain text data for analysis.
 ### day13
 Start the program by running `python ./day13_filegame.py`
 
+> Type `enter` to go on in the terminal
+
+
 ### day12
 - General data process program is in the `day12_pandas.py`
 - Cli version of this is in the `rmxlsx.py`
@@ -58,4 +61,22 @@ Start the program by running `python ./day13_filegame.py`
 - Very common, nothing special.
 
 ### day08-day01
-这几道题看了，感觉比较基础。其中的知识点在后面的程序里也有体现。暂且搁置。
+这几道题看了，感觉比较基础。其中的知识点在后面的程序里也有体现。暂且搁置。👻
+
+---
+怎么要看这几天的作业啊，那 ~~随便写写吧~~ (解释一下)。
+
+我是倒着写的，可以倒着看吗 🥺
+
+#### day08
+TypeHint在 `day13_filegame.py` 中用的挺多的
+
+TypeHint是非强制的一般来说对编辑器有用的类型注释，方便debug吧
+
+#### day07
+创建文件和修改文件在多线程rename那里也有用到。
+
+#### day06
+元组... 似乎没什么特殊的
+
+#### 有空补上
