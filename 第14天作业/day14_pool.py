@@ -3,6 +3,7 @@ import concurrent.futures
 from collections import Counter
 import os
 import re
+import timeit
 
 # files too big, if you want to run the program, replace the following path to your location
 path = "E:/Program_files/Tencent/QQdocument/day14asset/download"
@@ -33,7 +34,6 @@ def batch_file(filespath):
         for i in range(0, len(names), size):
             countFile = executor.submit(get_cnt, [filespath + f"/{singlefile}" for singlefile in names[i:i + size]])
             threads.append(countFile)
-    # print([thread.result() for thread in threads])
     threadCnt += sum([thread.result() for thread in threads], Counter())
     return threadCnt
 
@@ -49,18 +49,16 @@ def main():
         processes = []
         t = 0
         for dirs in names:
-            # print(filesloc + f"/{dirs}", " ....->from processpool")
             if os.path.isdir(filesloc + f"/{dirs}"):
                 processDir = executor.submit(batch_file, filesloc + f"/{dirs}")
                 processes.append(processDir)
-            # print("####-->", t, "<--####")
             t += 1
-        # print(len(processes))
         processCnt += sum([process.result() for process in processes], Counter())
-        # print(processCnt)
-    # with open("./output.csv") as output:
     res = pd.DataFrame(list(processCnt.items()), columns=["word", "count"])
     res.to_csv("./output.csv", index=None)
 
+
 if __name__ == "__main__":
-    main()
+    cnttime = timeit.Timer("main()", "from __main__ import main")
+    print("\n\n\nFinished in:", cnttime.timeit(number=1), "seconds")
+    # main()
