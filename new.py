@@ -3,9 +3,16 @@ import time
 import pandas as pd
 from collections import Counter
 
-cnt = Counter({"a":1,"b":1})
-test = pd.DataFrame(list(cnt.items()),columns=["ward","cnt"])
-test.to_csv("./out.csv",index=None)
+lines = []
+with open("./test","r") as test:
+    line = test.readline()
+    while line:
+        lines.append(line.rstrip("\n"))
+        line = test.readline()
 
 
-
+with open("./test","r+") as test:
+    for line in lines:
+        test.write(f"{line}-python\n")
+    
+    
